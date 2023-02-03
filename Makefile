@@ -5,7 +5,7 @@ REGISTRY_ENDPOINT := localhost:$(REGISTRY_PORT)
 PACKAGE_PREFIX := $(REGISTRY_ENDPOINT)
 REGISTRY_NAME := tanzu-integration-registry
 
-DOCKER := docker
+DOCKER := DOCKER_BUILDKIT=1 docker
 MAKE := make
 
 IMG_DEFAULT_TAG := latest

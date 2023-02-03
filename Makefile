@@ -127,7 +127,7 @@ else
 endif
 	$(MAKE) COMPONENT=$(COMPONENT) lint
 	$(MAKE) COMPONENT=$(COMPONENT) test
-	if [ $(call check_main_go,$(COMPONENT)) == Found ]; then \
+	if [ $(call check_main_go,$(COMPONENT)) = Found ]; then \
   		echo ">>>>>>>>>>>" ; \
 		if [ $(BUILD_BIN) = true ]; then \
 			$(MAKE) COMPONENT=$(COMPONENT) binary-build; \

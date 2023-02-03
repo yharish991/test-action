@@ -127,8 +127,8 @@ else
 endif
 	$(MAKE) COMPONENT=$(COMPONENT) lint
 	$(MAKE) COMPONENT=$(COMPONENT) test
-	if [[ $(call check_main_go,$(COMPONENT)) == Found ]]; then \
-		if [ $(BUILD_BIN) == "true" ]; then \
+	if [ $(call check_main_go,$(COMPONENT)) == Found ]]; then \
+		if [ $(BUILD_BIN) == true ]; then \
 			$(MAKE) COMPONENT=$(COMPONENT) binary-build; \
 		else \
 			$(MAKE) validate-component IMAGE_NAME=$(IMAGE_NAME) PACKAGE_PATH=$(PACKAGE_PATH) || exit 1; \

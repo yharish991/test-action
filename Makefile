@@ -103,7 +103,7 @@ $(COMPONENTS):
 	$(eval IMAGE = $(IMAGE_NAME):$(IMG_VERSION_OVERRIDE))
 	$(eval DEFAULT_IMAGE = $(IMAGE_NAME):$(IMG_DEFAULT_TAG))
 	$(eval IMAGE = $(shell if [ ! -z "$(OCI_REGISTRY)" ]; then echo $(OCI_REGISTRY)/$(IMAGE_NAME):$(IMG_VERSION_OVERRIDE); else echo $(IMAGE); fi))
-	@if [ "$(PUBLISH_IMAGES)" == "true" ]; then \
+	@if [[ "$(PUBLISH_IMAGES)" == "true" ]]; then \
 		$(MAKE) validate-component IMAGE_NAME=$(IMAGE_NAME) PACKAGE_PATH=$(PACKAGE_PATH) || exit 1; \
 		$(MAKE) publish-$@ IMAGE=$(IMAGE) DEFAULT_IMAGE=$(DEFAULT_IMAGE) PACKAGE_PATH=$(PACKAGE_PATH) BUILD_BIN=$(BUILD_BIN); \
 	else \
@@ -127,7 +127,7 @@ else
 endif
 	$(MAKE) COMPONENT=$(COMPONENT) lint
 	$(MAKE) COMPONENT=$(COMPONENT) test
-	if [ "$(call check_main_go,$(COMPONENT))" == "Found" ]; then \
+	if [[ "$(call check_main_go,$(COMPONENT))" == "Found" ]]; then \
 		if [ "$(BUILD_BIN)" == "true" ]; then \
 			$(MAKE) COMPONENT=$(COMPONENT) binary-build; \
 		else \

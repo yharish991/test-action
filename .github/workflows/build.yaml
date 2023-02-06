@@ -38,6 +38,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Get dependencies
         run: go mod download
 
@@ -46,5 +53,7 @@ jobs:
           make docker-build-all
 
       - name: run make docker-publish-all
+        env:
+          OCI_REGISTRY: ghcr.io/yharish991/test-action
         run: |
           make docker-publish-all

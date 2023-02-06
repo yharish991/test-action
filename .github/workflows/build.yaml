@@ -49,6 +49,8 @@ jobs:
         run: go mod download
 
       - name: run make docker-build-all
+        env:
+          OCI_REGISTRY: ghcr.io/yharish991/test-action
         run: |
           make docker-build-all
 

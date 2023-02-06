@@ -130,7 +130,7 @@ build-%:
 			$(MAKE) COMPONENT=$(COMPONENT) binary-build; \
 		else \
 			$(MAKE) validate-component IMAGE_NAME=$(IMAGE_NAME) PACKAGE_PATH=$(PACKAGE_PATH) || exit 1; \
-			$(MAKE) IMAGE=$(IMAGE) COMPONENT=$(COMPONENT) docker-build; \
+			$(MAKE) docker-build IMAGE=$(IMAGE) COMPONENT=$(COMPONENT); \
 		fi \
 	fi
 

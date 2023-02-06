@@ -44,3 +44,7 @@ jobs:
       - name: run make docker-build-all
         run: |
           make docker-build-all
+
+      - name: run make docker-publish-all
+        run: |
+          make docker-publish-all
